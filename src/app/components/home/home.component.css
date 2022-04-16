@@ -1,0 +1,14 @@
+.playerTable{
+    background-color: lightgray;
+}
+.containtCenter{
+    text-align: center;
+}
+
+.spacer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+.playerCount {
+    padding-left: 20px;
+}

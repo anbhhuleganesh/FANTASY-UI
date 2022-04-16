@@ -1,0 +1,37 @@
+List of Future Games:
+<select required type="text" name="games" [(ngModel)]="selectedGameId" (ngModelChange)="fetchTeams()">
+  <option *ngFor="let schedule of gameList" [value]="schedule.gameId">Game {{schedule.gameId}}</option>
+</select>
+<div *ngIf="gameSelected">
+  <div class="spacer">
+    So far total of points: {{soFarPriceCount}}
+  </div>
+  <div class="spacer">So far selected Players: {{selectedPlayers.length}}</div>
+  
+  <table class="playerTable">
+  
+    <tr style="border: 1px;">
+      <td>Player name and points</td>
+      <td>Captain?</td>
+      <td>Vice Captain?</td>
+    </tr>
+    <ng-container *ngFor="let player of gamePlayers">
+      <tr>
+        <td>
+          <mat-checkbox id="{{player.playerId}}" (change)="addPlayer(player, $event)">
+            {{player.firstName}}  {{player.lastName}} / {{player.price}} points
+          </mat-checkbox>  
+        </td>
+        <td class="containtCenter">
+          <mat-checkbox class="containtCenter" id="C+{{player.playerId}}" (change)="addCaptain(player, $event)"></mat-checkbox>
+        </td>
+        <td class="containtCenter">
+          <mat-checkbox id="VC+{{player.playerId}}" (change)="addViceCaptain(player, $event)"></mat-checkbox>
+        </td>
+      </tr>
+    </ng-container>
+</table>
+  <div>
+    <button type="submit" (click)="submitTeam()" [disabled]="!selectedPerfectTeam">Submit Team</button>
+  </div>
+</div>
